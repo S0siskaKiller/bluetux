@@ -1,13 +1,9 @@
 #!/bin/bash
-#!/bin/bash
 
-   # Устанавливаем цвет фона
-   tput setab 4  # Синий фон
-   clear         # Очищаем экран
+   tput setab 4  
+   clear         
 
-   # Показываем сообщение
    cowsay -f tux "Linux Best OS"
    sleep 999999
 
-   # Сбрасываем цвета
    tput sgr0
