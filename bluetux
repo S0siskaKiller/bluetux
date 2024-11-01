@@ -1,9 +1,9 @@
 #!/bin/bash
-
+read -p "Enter your text:" answer
    tput setab 4  
    clear         
 
-   cowsay -f tux "Linux Best OS"
+   cowsay -f tux "$answer"
    sleep 999999
 
    tput sgr0
