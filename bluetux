@@ -1,4 +1,17 @@
 #!/bin/bash
+
+if [ "$1" == "-l" ];then
+	echo "Available color schemes:"
+	echo "pink"
+	echo "yellow"
+	echo "red"
+	echo "green"
+	echo "aqua"
+	echo "black"
+	echo "emacs"
+	exit 1
+fi
+
 read -p "Enter your text:" answer
 read -p "Select background color:" backg
 if [ $backg = "blue" ];then
@@ -21,7 +34,15 @@ elif [ $backg = "aqua" ];then
 	clear
 elif [ $backg = "black" ];then
 	tput setab 0
+elif [ $backg = "emacs" ];then 
+	tput setab 5
+	tput setaf 0
+	clear
+else
+	echo "Unsupported color scheme, look at bluetux -l"
+	exit 1
 fi
+
    cowsay -f tux "$answer"
 read -p " " pause
 tput sgr0
