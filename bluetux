@@ -23,6 +23,6 @@ elif [ $backg = "black" ];then
 	tput setab 0
 fi
    cowsay -f tux "$answer"
-sleep 999999
+read -p " " pause
 tput sgr0
 
