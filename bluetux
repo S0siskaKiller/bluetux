@@ -19,6 +19,8 @@ elif [ $backg = "green" ];then
 elif [ $backg = "aqua" ];then
 	tput setab 6
 	clear
+elif [ $backg = "black" ];then
+	tput setab 0
 fi
    cowsay -f tux "$answer"
 sleep 999999
