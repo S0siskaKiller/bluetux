@@ -8,12 +8,12 @@ if [ "$1" == "-l" ];then
 	echo "green"
 	echo "aqua"
 	echo "black"
-	echo "emacs"
 	exit 1
 fi
 
 read -p "Enter your text:" answer
 read -p "Select background color:" backg
+read -p "Select text color:" foreg
 if [ $backg = "blue" ];then
    tput setab 4  
    clear         
@@ -34,15 +34,29 @@ elif [ $backg = "aqua" ];then
 	clear
 elif [ $backg = "black" ];then
 	tput setab 0
-elif [ $backg = "emacs" ];then 
-	tput setab 5
-	tput setaf 0
 	clear
+fi
+	clear
+	if [ $foreg = "red" ];then
+		tput setaf 1
+	elif [ $foreg = "green" ];then
+		tput setaf 2
+	elif [ $foreg = "yellow" ];then
+		tput setaf 3
+	elif [ $foreg = "blue" ];then
+		tput setaf 4
+	elif [ $foreg = "pink" ];then
+		tput setaf 5
+	elif [ $foreg = "aqua" ];then
+		tput setaf 6
+	elif [ $foreg = "white" ];then
+		tput setaf 7
+	elif [ $foreg = "black" ];then
+		tput setaf 8
 else
 	echo "Unsupported color scheme, look at bluetux -l"
 	exit 1
 fi
-
    cowsay -f tux "$answer"
 read -p " " pause
 tput sgr0
