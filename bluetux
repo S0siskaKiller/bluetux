@@ -35,7 +35,10 @@ elif [ $backg = "aqua" ];then
 elif [ $backg = "black" ];then
 	tput setab 0
 	clear
-fi
+else
+	echo "Unsupported color scheme, look at bluetux -l"
+	exit 1
+fi 
 	clear
 	if [ $foreg = "red" ];then
 		tput setaf 1
@@ -59,5 +62,9 @@ else
 fi
    cowsay -f tux "$answer"
 read -p " " pause
+if [ $pause = "exit" ];then
 tput sgr0
+clear
+exit 1
+fi
 
