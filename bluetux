@@ -1,16 +1,21 @@
 #!/bin/bash
-
-if [ "$1" == "-l" ];then
-	echo "Available color schemes:"
+function colors_list() {
+echo "Available color schemes:"
 	echo "pink"
 	echo "yellow"
 	echo "red"
 	echo "green"
 	echo "aqua"
 	echo "black"
+}
+if [ "$1" == "-l" ];then
+colors_list
+exit 1 
+fi
+if ! command -v cowsay &> /dev/null;then
+	echo "cowsay is not installed, install it to use bluetux"
 	exit 1
 fi
-
 read -p "Enter your text:" answer
 read -p "Select background color:" backg
 read -p "Select text color:" foreg
@@ -36,7 +41,8 @@ elif [ $backg = "black" ];then
 	tput setab 0
 	clear
 else
-	echo "Unsupported color scheme, look at bluetux -l"
+	echo "Unsupported color scheme."
+	colors_list
 	exit 1
 fi 
 	clear
@@ -57,14 +63,15 @@ fi
 	elif [ $foreg = "black" ];then
 		tput setaf 8
 else
-	echo "Unsupported color scheme, look at bluetux -l"
+	echo "Unsupported color scheme."
+	colors_list
 	exit 1
 fi
    cowsay -f tux "$answer"
 read -p " " pause
-if [ $pause = "exit" ];then
+if [ "$pause" == "exit" ];then
 tput sgr0
 clear
-exit 1
+exit 0
 fi
 
